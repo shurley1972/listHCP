@@ -1,5 +1,12 @@
 <style>
-@import url("https://collaboration.medline.com/department/compliance/hcphostedevents/Lists/HCPEvents/Form/Components/datepicker/smoothness/jquery-ui.min.css");
+@import url("https://collaboration.medline.com/department/compliance/hcp/Lists/listHCP/Form/Design/jquery-ui.min.css");
+
+.ui-widget-content .ui-icon {
+	background-image: url("https://collaboration.medline.com/department/compliance/hcp/Lists/listHCP/Form/Design/ui-icons_222222_256x240.png");
+}
+.ui-widget-header .ui-icon {
+	background-image: url("https://collaboration.medline.com/department/compliance/hcp/Lists/listHCP/Form/Design/ui-icons_222222_256x240.png");
+}
 
 .ms-ChoiceField-field:after
 {
@@ -34,14 +41,14 @@ border-color:#303030;
     /* Tooltip Information support */
 .information  
 {
-	background-image: url("https://collaboration.medline.com/department/compliance/hcphostedevents/Lists/HCPEvents/Form/images/information.png");
+	background-image: url("https://collaboration.medline.com/department/compliance/hcp/Lists/listHCP/Form/Design/information.png");
 	background-position: left bottom;
 	background-repeat: no-repeat;
 
 }
 .information:hover
 {
-	background-image: url("https://collaboration.medline.com/department/compliance/hcphostedevents/Lists/HCPEvents/Form/images/information-active.png");
+	background-image: url("https://collaboration.medline.com/department/compliance/hcp/Lists/listHCP/Form/Design/information-active.png");
 	cursor:pointer;
 }
 .tooltip {
@@ -123,7 +130,7 @@ input[type=password]:focus, .ms-Grid input[type=text]:focus, input[type=file]:fo
 }
 select 
 {
-	background-image: url("https://collaboration.medline.com/department/compliance/hcphostedevents/Lists/HCPEvents/Form/images/downarrow.jpg");
+	background-image: url("https://collaboration.medline.com/department/compliance/hcp/Lists/listHCP/Form/Design/downarrow.jpg");
 	background-position: right center;
 	background-repeat: no-repeat;
 	padding-right: 2px;
@@ -134,7 +141,7 @@ select
 }
 input.datepicker
 {
-	background-image: url("https://collaboration.medline.com/department/compliance/hcphostedevents/Lists/HCPEvents/Form/components/datepicker/images/calendar.jpg");
+	background-image: url("https://collaboration.medline.com/department/compliance/hcp/Lists/listHCP/Form/Design/calendar.jpg");
 	background-position: right center;
 	background-repeat: no-repeat;
 	padding-right: 18px;
