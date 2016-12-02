@@ -219,13 +219,21 @@ textarea.parsley-error {
   line-height: 0.9em;
   opacity: 0;
   color:#b94a48;
+  font-weight:bold;  
 
   transition: all .3s ease-in;
   -o-transition: all .3s ease-in;
   -moz-transition: all .3s ease-in;
   -webkit-transition: all .3s ease-in;
 }
-
+.custom-error-text, li.parsley-required
+{
+	color:#b94a48;
+	font-weight:bold; 
+	font-size: 0.9em;	
+	font-family:"Open Sans","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif !important;	
+ 
+}
 .parsley-errors-list.filled {
   opacity: 1;
 }

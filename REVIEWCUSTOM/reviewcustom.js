@@ -1,7 +1,6 @@
 // Recommended AMD module pattern for a Knockout component that:
 //  - Can be referenced with just a single 'require' declaration
 //  - Can be included in a bundle using the r.js optimizer
-
 define(['text!reviewcustom.html'], function( htmlString) {
 
 	/**
@@ -20,7 +19,8 @@ define(['text!reviewcustom.html'], function( htmlString) {
 		//Form comments textbox for reviewer input.
 		this.commentsValue = ko.observable("");
 		// Display form if user has design permissions.  Need check from Nikolay for permissions.
-		this._formEnabled = ko.computed(function(){return true})			
+		//this._formEnabled = ko.computed(function(){return true})
+		this._formEnabled = ko.observable(false);		
 		// Internal column name for workflow processing.
 		this.WorkflowSteps = this.$column("mwp_ApprovalWorkflow");	
 
@@ -28,6 +28,7 @@ define(['text!reviewcustom.html'], function( htmlString) {
 		if (this.WorkflowSteps() == "")
 		{
 			var workflowStep = []
+			
 			var newWorkflowStep = {}
 			newWorkflowStep.ID = this.ID
 			newWorkflowStep.NextID = this.NextID
@@ -55,7 +56,8 @@ define(['text!reviewcustom.html'], function( htmlString) {
 			{
 				if (workflowStep[i].ID == this.ID)
 				{
-					//alert('Step has already been added.  Do Nothing');
+					var canEdit = this.$runtime.$userPermissions.has(SP.PermissionKind.editListItems);
+					if (workflowStep[i].Current==true && canEdit == true){this._formEnabled(true)}
 					return;
 				}
 			}
@@ -118,6 +120,8 @@ ReviewerComments:	*Internal populated by system. Reviewer comments.
 			
 		self._formButtonApproveClick = function() {
 			var workflowStep = $.parseJSON(this.WorkflowSteps())
+			$(".custom-error-text").hide();
+
 			for (var i=0; i<workflowStep.length; i++)
 			{
 				if (workflowStep[i].ID == this.ID)
@@ -134,11 +138,11 @@ ReviewerComments:	*Internal populated by system. Reviewer comments.
 		self._formButtonRejectClick = function() {
 			if (this.commentsValue() == "")
 			{
-				$("#comments-Req-Msg").show();
+				$(".custom-error-text").show();
 			}
 			else
 			{
-				$("#comments-Req-Msg").hide();
+				$(".custom-error-text").hide();
 				this._formReadOnly(false);				
 				var workflowStep = $.parseJSON(this.WorkflowSteps())
 				for (var i=0; i<workflowStep.length; i++)
@@ -149,6 +153,7 @@ ReviewerComments:	*Internal populated by system. Reviewer comments.
 						workflowStep[i].ReviewerComments = this.commentsValue();
 					}
 			}
+			
 			var workflowStepStr = JSON.stringify(workflowStep)
 			this._formReadOnly(false);
 			this.WorkflowSteps(workflowStepStr);

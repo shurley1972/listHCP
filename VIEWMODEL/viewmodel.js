@@ -1,28 +1,25 @@
 define([ 'text!master.css','text!./viewmodel.html'], function( css,htmlString) {
 //define([], function() {
 	function viewModel(params) {
-		if( params.get) params.get( this, params.columns);
-		// this._formReadOnly() - computed observable
+		//if( params.get) params.get( this, params.columns);
+		debugger;
+		 //this._formReadOnly() - computed observable
 		// +++ EDIT MODEL BELOW TO DESIGN YOUR CUSTOM SPA FORM
 		var self = this;
 		self.attachmentRequired = ko.observable(false);
 		//self.Title = ko.observable(); // commented out because of params.get
-		//Dependent Choices
 		// Bug in code.  Have to set for variables
-		self.mwp_OneDayEvent = ko.observable();		
-		self.mwp_EventStartDate = ko.observable();		
-		self.mwp_EventEndDate = ko.observable();				
-
+	
+		//Dependent Choices
 		self.SetTitleEvent = ko.computed(function(){if(self.mwp_EventTitle()!= null){self.Title(self.mwp_EventTitle() + ' in ' + self.mwp_EventCity() + ', ' + self.mwp_EventState());}})
 		self.SetTitleCity = ko.computed(function(){if(self.mwp_EventCity()!= null){self.Title(self.mwp_EventTitle() + ' in ' + self.mwp_EventCity() + ', ' + self.mwp_EventState());}})
 		self.SetTitleState = ko.computed(function(){if(self.mwp_EventState()!=undefined && self.mwp_EventState()!= ""){self.Title(self.mwp_EventTitle() + ' in ' + self.mwp_EventCity() + ', ' + self.mwp_EventState());}})
-
 		
 		self.mwp_OneDayEventShow = ko.computed(function(){if(self.mwp_OneDayEvent() == "Yes"){return "none"}else{return "table-Cell"}}, self); 		
 		self.SetOneDayEventDefault = ko.computed(function(){if(self.mwp_OneDayEvent() == ""){self.mwp_OneDayEvent('Yes')}}, self);
 		self.SetEventEndDate = ko.computed(function(){if(self.mwp_OneDayEvent() == "Yes"){self.mwp_EventEndDate(self.mwp_EventStartDate());}else if(self.mwp_EventStartDate()==self.mwp_EventEndDate()){self.mwp_EventEndDate("");}});
-		self.SetEventStartDateFormat = ko.computed(function(){if(self.mwp_EventStartDate() != undefined && self.mwp_EventStartDate().indexOf("T") > -1){var dt=self.mwp_EventStartDate().substring(0,10);dt=dt.substring(5,7)+"/"+dt.substring(8,10)+"/"+dt.substring(0,4) ;self.mwp_EventStartDate(dt);}})
-		self.SetEventEndDateFormat = ko.computed(function(){if(self.mwp_EventEndDate() != undefined && self.mwp_EventEndDate().indexOf("T") > -1){var dt=self.mwp_EventEndDate().substring(0,10);dt=dt.substring(5,7)+"/"+dt.substring(8,10)+"/"+dt.substring(0,4) ;self.mwp_EventEndDate(dt);}})
+		self.SetEventStartDateFormat = ko.computed(function(){if(self.mwp_EventStartDate() != undefined && self.mwp_EventStartDate().indexOf("T") > -1){var dt=self.mwp_EventStartDate().substring(0,10);dt=dt.substring(5,7)+"/"+dt.substring(8,10)+"/"+dt.substring(0,4) ;self.mwp_EventStartDate(dt);}}, self)
+		self.SetEventEndDateFormat = ko.computed(function(){if(self.mwp_EventEndDate() != undefined && self.mwp_EventEndDate().indexOf("T") > -1){var dt=self.mwp_EventEndDate().substring(0,10);dt=dt.substring(5,7)+"/"+dt.substring(8,10)+"/"+dt.substring(0,4) ;self.mwp_EventEndDate(dt);}}, self)
 		self.mwp_VendorBoothShow = ko.computed(function(){if(self.mwp_VendorBooth() == "Yes"){return "block"}else{return "none"}}, self);
 		self.mwp_InServiceShow = ko.computed(function(){if(self.mwp_InService() == "Yes"){return "block"}else{return "none"}}, self); 
 		self.SetAttachmentRequiredCert = ko.computed(function(){if(self.mwp_VendorBooth() == "Yes"){return true}else{return false}}, self);
@@ -34,8 +31,9 @@ define([ 'text!master.css','text!./viewmodel.html'], function( css,htmlString) {
 		self.mwp_TopicRequired = ko.computed(function(){if(self.mwp_InService() == "Yes"){return true}else{return false}}, self);	
 		self.mwp_SpeakerRequired = ko.computed(function(){if(self.mwp_InService() == "Yes"){return true}else{return false}}, self);		
 		self.mwp_DescribeOtherRequired = ko.computed(function(){if(self.mwp_OtherParticipation() == "Yes"){return true}else{return false}}, self);
-		
-		
+		self.SetVendorBoothFeeDefault = ko.computed(function(){if(!self.mwp_VendorBoothFee()){self.mwp_VendorBoothFee(0);}})
+		self.enableValue = ko.pureComputed( function() { return (self.$readonly()) ? false : true; }, self);
+
 		self.nullbug = ko.computed(function(){
 		if(self.mwp_CustomerNumber()== null){self.mwp_CustomerNumber('');}	
 		if(self.mwp_PayeeTaxId()== null){self.mwp_PayeeTaxId('');}
@@ -44,10 +42,10 @@ define([ 'text!master.css','text!./viewmodel.html'], function( css,htmlString) {
 		if(self.mwp_SpeakerName()== null){self.mwp_SpeakerName('');}	
 		if(self.mwp_DescribeOther()== null){self.mwp_DescribeOther('');}
 		if(self.mwp_OtherValue()== null){self.mwp_OtherValue('');}			
-		})		
+		})	
 		
 		//Gets current logged in user.  
-		self._GetUserInfo = function()	{
+/*		self._GetUserInfo = function()	{
 			var url = _spPageContextInfo.webAbsoluteUrl + "/_api/SP.UserProfiles.PeopleManager/GetMyProperties?$Select=AccountName";
 			$.ajax(
 				{
@@ -132,7 +130,7 @@ define([ 'text!master.css','text!./viewmodel.html'], function( css,htmlString) {
 					}
 				});                            
 		}		
-		self._GetUserInfo()				
+		self._GetUserInfo()		*/		
 		requirejs(["jqueryui"], function() 
 			{ 		
 				$('#ui-datepicker-div').remove();

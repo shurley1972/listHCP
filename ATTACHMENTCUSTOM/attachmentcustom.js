@@ -109,7 +109,7 @@ define(['text!./attachmentcustom.html'], function( htmlString) {
 			self.form()._formAttachmentUpload(self.index);
 			//self.input.click();
 			//Remove Parsley Error
-			$("component-attachmentcustom[params~='prefix: '" + params.prefix + "', required:']").find("li").html("");
+			$("component-attachmentcustom[params~=''prefix': '" + params.prefix + "', 'required':']").find("li").html("");
 		};
 		self._formButtonAddFileEnabled = ko.computed(function () {
 			var b = false;
