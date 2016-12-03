@@ -25,7 +25,7 @@ define(['text!reviewcustom.html'], function( htmlString) {
 		this.WorkflowSteps = this.$column("mwp_ApprovalWorkflow");	
 
 		//Sets WorkflowSteps initial parameters needed for workflow processing.  
-		if (this.WorkflowSteps() == "")
+		if (this.WorkflowSteps() == undefined)
 		{
 			var workflowStep = []
 			
@@ -75,6 +75,7 @@ define(['text!reviewcustom.html'], function( htmlString) {
 			workflowStep.push(newWorkflowStep)
 			var workflowStepStr = JSON.stringify(workflowStep)
 			this.WorkflowSteps(workflowStepStr);
+
 		},this);
 
 		// Hides Approve/Reject if ReviewerOutcome has a value.  Workflow will reset the field.

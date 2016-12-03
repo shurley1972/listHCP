@@ -7,6 +7,18 @@ define([ 'text!master.css','text!./viewmodel.html'], function( css,htmlString) {
 		// +++ EDIT MODEL BELOW TO DESIGN YOUR CUSTOM SPA FORM
 		var self = this;
 		self.attachmentRequired = ko.observable(false);
+		this.mwp_DescriptionAndPurposeOfEvent = ko.observable("").extend({ listItem: "mwp_DescriptionAndPurposeOfEvent" });
+		this.Title = ko.observable("").extend({ listItem: "Title" });
+		this.mwp_OneDayEvent = ko.observable("").extend({ listItem: "mwp_OneDayEvent" });
+		this.mwp_EventStartDate = ko.observable("").extend({ listItem: "mwp_EventStartDate" });
+		this.mwp_EventEndDate = ko.observable("").extend({ listItem: "mwp_EventEndDate" });
+		this.mwp_EventState = ko.observable("").extend({ listItem: "mwp_EventState" });
+		this.mwp_IsTheEventOpenToTheCommunity = ko.observable("").extend({ listItem: "mwp_IsTheEventOpenToTheCommunity" });
+		this.mwp_VendorBooth = ko.observable("").extend({ listItem: "mwp_VendorBooth" });
+		this.mwp_InService = ko.observable("").extend({ listItem: "mwp_InService" });
+		this.mwp_OtherParticipation = ko.observable("").extend({ listItem: "mwp_OtherParticipation" });	
+		this.mwp_TermsAndConditions = ko.observable("").extend({ listItem: "mwp_TermsAndConditions" });			
+		
 		//self.Title = ko.observable(); // commented out because of params.get
 		// Bug in code.  Have to set for variables
 	
