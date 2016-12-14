@@ -56,6 +56,14 @@ define([ 'text!master.css','text!./viewmodel.html'], function( css,htmlString) {
 		if(self.mwp_OtherValue()== null){self.mwp_OtherValue('');}			
 		})	
 		
+		/**
+		 * Get system-supported variables
+		 */
+		self.runtime = ko.observable().extend({form: "runtime"});
+		self.readonly = ko.observable().extend({form: "readonly"});
+		self.designmode = ko.observable().extend({form: "designmode"});
+
+		self.design = ko.computed(function(){if(self.designmode() == true){return true;}else{return false}})		
 		//Gets current logged in user.  
 /*		self._GetUserInfo = function()	{
 			var url = _spPageContextInfo.webAbsoluteUrl + "/_api/SP.UserProfiles.PeopleManager/GetMyProperties?$Select=AccountName";

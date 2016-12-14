@@ -1,7 +1,35 @@
 <div data-bind="visible: _formEnabled,css: {'ge-designmode': $formDesignMode}">
 	<div style="border: solid #0072C6 3px; padding: 5px 5px 5px 5px">
-    <div class="Section" style="background-color:#ff5500;color:white;font-weight:bold; letter-spacing: 2px;font-size:18px;" data-bind="text: stepName"></div>
+    <div class="Section" style="background-color:#0072C6;color:white;font-weight:bold; letter-spacing: 2px;font-size:18px;" data-bind="text: stepName"></div>
     <div style="padding-bottom: 8px;"></div>
+		<div data-bind="visible: _showOECReportable">
+			<div class="ms-ChoiceFieldGroup">
+                <label class="ms-Label">Reportable</label>
+                <div class="table-Cell" style="padding: 5px; border-radius: 3px;">
+                    <div class="ms-ChoiceField validate" style="float: left;">
+                        <input name="Reportable" class="ms-ChoiceField-input" id="reportable-yes" type="radio" value="Yes" data-bind="checked: reportable, enable: _formReadOnly">
+                        <label class="ms-ChoiceField-field" for="reportable-yes"><span class="ms-Label">Yes</span> </label>
+                    </div>
+                    <div class="ms-ChoiceField validate" style="padding-left: 30px; float: left;">
+                        <input name="Reportable" class="ms-ChoiceField-input" id="reportable-no" type="radio" value="No" data-bind="checked: reportable, enable: _formReadOnly" >
+                        <label class="ms-ChoiceField-field" for="reportable-no"><span class="ms-Label">No</span> </label>
+                    </div>
+                </div>
+            </div>
+            <div class="table-Cell"> 
+					<label class="ms-Label">Reportability Reasons</label> 
+					<select class="validate" data-bind="value: reportabilityReasons, enable: _formReadOnly" style="width:400px">
+						<option value="">Select</option>
+						<option value="Payment to Teaching Hospital">Payment to Teaching Hospital</option>
+						<option value="Third Party Physician Owners">Third Party Physician Owners</option>
+						<option value="Other">Other</option>
+					</select> 
+			</div>
+            <div class="row-spacing"></div>
+			<label class="ms-Label">Notes</label>
+			<textarea class="validate" style="width: 600px; height: 70px;" data-bind="value: notes, enable: _formReadOnly"></textarea>
+			<div class="row-spacing"></div>
+		</div>	
 	<label class="ms-Label">Comments</label>
     <textarea class="validate" style="width: 600px; height: 70px;" data-bind="value: commentsValue, enable: _formReadOnly"></textarea>
 	<div class="custom-error-text" id="comments-Req-Msg" style="color:Red;display:none;font-weight:bold">You must enter a rejection reason in the Comments field.</div>

@@ -7,7 +7,6 @@
 .ui-widget-header .ui-icon {
 	background-image: url("https://collaboration.medline.com/department/compliance/hcp/Lists/listHCP/Form/Design/ui-icons_222222_256x240.png");
 }
-
 .ms-ChoiceField-field:after
 {
 border:1px solid grey;
@@ -16,7 +15,10 @@ border:1px solid grey;
 {
 border-color:#303030;
 }
-
+.rowHeight
+{
+height:0px;
+}
 .ms-Grid
 {
 	margin-left: 20px;

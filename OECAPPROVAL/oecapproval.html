@@ -1,0 +1,50 @@
+<div class="ms-Table" data-bind="visible: enableui, css: {'ge-designmode': designmode}">
+	<div style="border: solid #0072C6 3px; padding: 5px 5px 5px 5px">
+		<div class="ms-Table-row" style="background-color:#0078d7;" >
+			<span class="ms-Table-cell ms-Button-label" style="float:left; border-width:3px; border-style:solid; background-color:#0078d7; border-color:#0078d7; color:white;" data-bind="text: StepName"></span>
+		</div>
+		<div class="ms-Table-row">
+			<div class="ms-ChoiceFieldGroup">
+                <label class="ms-Label">Reportable</label>
+                <div class="table-Cell" style="padding: 5px; border-radius: 3px;">
+                    <div class="ms-ChoiceField validate" style="float: left;">
+                        <input name="Reportable" class="ms-ChoiceField-input" id="reportable-yes" type="radio" value="Yes" data-bind="checked: reportable, enable: $enableTaskForm">
+                        <label class="ms-ChoiceField-field" for="reportable-yes"><span class="ms-Label">Yes</span> </label>
+                    </div>
+                    <div class="ms-ChoiceField validate" style="padding-left: 30px; float: left;">
+                        <input name="Reportable" class="ms-ChoiceField-input" id="reportable-no" type="radio" value="No" data-bind="checked: reportable, enable: $enableTaskForm" >
+                        <label class="ms-ChoiceField-field" for="reportable-no"><span class="ms-Label">No</span> </label>
+                    </div>
+                </div>
+            </div>
+		</div>
+        <div class="ms-Table-row"> 
+			<label class="ms-Label">Reportability Reasons</label> 
+			<select class="validate" data-bind="value: reportabilityReasons, enable: $enableTaskForm" style="width:400px">
+				<option value="">Select</option>
+				<option value="Payment to Teaching Hospital">Payment to Teaching Hospital</option>
+				<option value="Third Party Physician Owners">Third Party Physician Owners</option>
+				<option value="Other">Other</option>
+			</select> 
+			<div class="row-spacing"></div>	
+		</div>		
+		<div class="ms-Table-row">
+			<label class="ms-Label">Comments</label>
+			<textarea class="validate" style="width: 600px; height: 70px;" data-bind="value: commentsValue, enable: $enableTaskForm"></textarea>
+			<div class="custom-error-text" id="comments-Req-Msg" style="color:Red;display:none;font-weight:bold">You must enter a rejection reason in the Comments field.</div>					
+			<div class="row-spacing"></div>	
+		</div>
+		<div class="ms-Table-row">
+			<span class="ms-Table-cell" style="float:left; width:80px;">
+				<button data-bind="visible: enableApproveButton, click: buttonApproveClick" class="ms-Button ms-Button--primary"><span class="ms-Button-label">Approve</span></button>
+			</span>
+			<span class="ms-Table-cell" style="float:left; width:80px;">
+				<button data-bind="visible: enableRejectButton, click: buttonRejectClick" class="ms-Button ms-Button--primary"><span class="ms-Button-label">Reject</span></button>
+			</span>
+			<span class="ms-Table-cell" style="float:right; width:80px;">
+				<button data-bind="visible: enableCloseButton, click: buttonCloseClick" class="ms-Button ms-Button--primary"><span class="ms-Button-label">Close</span></button>
+			</span>
+		</div>
+	</div>
+</div>
+

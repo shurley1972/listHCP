@@ -20,9 +20,20 @@ define(['text!reviewcustom.html'], function( htmlString) {
 		this.commentsValue = ko.observable("");
 		// Display form if user has design permissions.  Need check from Nikolay for permissions.
 		//this._formEnabled = ko.computed(function(){return true})
-		this._formEnabled = ko.observable(false);		
+		this._formEnabled = ko.observable(false);	
+		//Custom code to show reportable fields to OEC (Reportable, ReportabilityReasons, Notes)
+		this._showOECReportable = ko.observable(false);	
+		if (this.ID == "OECApproval")
+		{
+			this._showOECReportable(true);
+		}
+		
 		// Internal column name for workflow processing.
 		this.WorkflowSteps = this.$column("mwp_ApprovalWorkflow");	
+		//this.WorkflowSteps = ko.observable("").extend({ listItem: "mwp_ApprovalWorkflow" });
+		this.reportable = ko.observable("").extend({ listItem: "Reportable" });		
+		this.reportabilityReasons = ko.observable("").extend({ listItem: "ReportabilityReasons" });
+		this.notes = ko.observable("").extend({ listItem: "Notes" });		
 
 		//Sets WorkflowSteps initial parameters needed for workflow processing.  
 		if (this.WorkflowSteps() == undefined)
