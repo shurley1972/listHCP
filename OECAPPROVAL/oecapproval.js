@@ -181,7 +181,7 @@ define(['text!./oecapproval.html', 'text!./workflow.xaml'], function( htmlString
 			"NextID": "",
 			"StepName": "Manager Approval Needed",
 			"ApproverType": "User",
-			"ApproverAccountID": "sphurley",
+			"ApproverAccountID": "kpandya",
 			"FirstStep": "true",			
 			"closeonclick": false,
 		},
