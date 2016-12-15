@@ -145,7 +145,7 @@ define(['text!./managerapproval.html', 'text!./workflow.xaml'], function( htmlSt
 				"Processed": false,
 				"ReviewerOutcome": "",
 				"ReviewerComments": "",
-				"Dependency": false
+				"Dependency": true
 			};
 		};
 		this.$strNewEmptyWorkflow = function() {
