@@ -27,7 +27,7 @@ define(['text!./oecapproval.html', 'text!./workflow.xaml'], function( htmlString
 		this.designmode = ko.observable().extend({form: "designmode"});
 //		 
 		this.commentsValue = ko.observable("");//Form comments textbox for reviewer input.
-		this.oecapprovalStepEnabled = ko.observable(true);	// Display form if user has design permissions.  Need check from Nikolay for permissions.
+		this.oecapprovalStepEnabled = ko.observable(false);	// Display form if user has design permissions.  Need check from Nikolay for permissions.
 		this.taskFormReadOnly = ko.observable(false); // Hides Approve/Reject if ReviewerOutcome has a value.  Workflow will reset the field.
 //
 		this.enableui = ko.pureComputed(function() {
