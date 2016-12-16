@@ -74,8 +74,7 @@ define(['text!./managerapproval.html', 'text!./workflow.xaml'], function( htmlSt
 			this.approvalWorkflowText(JSON.stringify(arr));
 		},this);
 		// triggers JSON initialization for new form
-		//setTimeout( () => { if( !this.approvalWorkflowText()) this.approvalWorkflowText(null); }, 2000);
-		setTimeout( function() { if( !self.approvalWorkflowText()) self.approvalWorkflowText(null); }, 2000);
+		setTimeout( () => { if( !this.approvalWorkflowText()) this.approvalWorkflowText(null); }, 2000);
 		
 
 		/**
