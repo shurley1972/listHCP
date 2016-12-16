@@ -86,6 +86,7 @@ define(['text!./oecapproval.html', 'text!./workflow.xaml'], function( htmlString
         this.buttonApproveClick = function () {	
 			this.runtime()._closeOnButtonClick = this.closeFormOnButtonClick;
 			//this.approvalWorkflowJSON()[this.ID] = this.$jsonNewEmptyWorkflowStep();
+			$(".custom-error-text").hide();	
 			this.approvalWorkflowJSON()[this.ID].ReviewerOutcome = "Approved";
 			this.approvalWorkflowJSON()[this.ID].ReviewerComments = this.commentsValue();
 			this.approvalWorkflowJSON.valueHasMutated();
