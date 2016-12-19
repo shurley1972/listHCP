@@ -2,7 +2,7 @@ define([ 'text!master.css','text!./viewmodel.html'], function( css,htmlString) {
 //define([], function() {
 	function viewModel(params) {
 		//if( params.get) params.get( this, params.columns);
-		debugger;
+		//debugger;
 		 //this._formReadOnly() - computed observable
 		// +++ EDIT MODEL BELOW TO DESIGN YOUR CUSTOM SPA FORM
 		var self = this;
