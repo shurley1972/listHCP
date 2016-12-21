@@ -45,7 +45,7 @@ define(['text!textboxcustom.html'], function( htmlString) {
 		 * VALUE	
 		 * observable bound to UI html template to show sharepoint column's 'Value' 
 		 */
-		this.value = this.$column(this.internalName);
+		this.value = ko.observable().extend({ listItem: this.internalName });
 		// -- ENABLE VALUE EDIT MODE
 		// observable bound to UI html template to enable sharepoint column's 'Value'editing
 		this.enableValue = ko.pureComputed( function() { return this.$enabled(); }, this);
